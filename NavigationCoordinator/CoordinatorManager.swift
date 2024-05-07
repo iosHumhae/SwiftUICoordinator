@@ -8,6 +8,10 @@
 import SwiftUI
 
 class CoordinatorManager: ObservableObject {
+    static let shared = CoordinatorManager()
+    
+    private init() {}
+    
     @Published var colorTab = Coordinator()
-    @Published var textTab = Coordinator()
+//    @Published var textTab = Coordinator()
 }

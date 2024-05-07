@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ColorIntroView: View {
-    @EnvironmentObject private var coordinatorManager: CoordinatorManager
-    
+    @StateObject private var coordinatorManager = CoordinatorManager.shared
+
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .black]
+    
     var body: some View {
         NavigationStack(path: $coordinatorManager.colorTab.path) {
             List(colors, id: \.self) { color in
@@ -23,11 +24,13 @@ struct ColorIntroView: View {
             }
             .navigationTitle("Select a color")
             .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: coordinatorManager.colorTab.path) { oldValue, newValue in
+                print("바뀌었다고... 트리거 했다고...")
+            }
         }
     }
 }
 
 #Preview {
     ColorIntroView()
-        .environmentObject(CoordinatorManager())
 }

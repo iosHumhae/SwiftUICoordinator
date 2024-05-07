@@ -21,7 +21,7 @@ class Coordinator: ObservableObject {
                 )
             case .textView(let text):
                 return AnyView(
-                    Text("")
+                    Text(text)
                 )
             }
         }
@@ -34,8 +34,8 @@ class Coordinator: ObservableObject {
     @Published var path: [ViewType] = []
     
     func push(_ view: ViewType) {
-        print("\(#function) path: \(path)")
         path.append(view)
+        print("\(#function) path: \(path)")
     }
     
     func popLast() {

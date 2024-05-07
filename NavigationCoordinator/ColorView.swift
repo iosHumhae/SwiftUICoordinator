@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorView: View {
-    @EnvironmentObject private var coordinatorManager: CoordinatorManager
+    @StateObject private var coordinatorManager = CoordinatorManager.shared
     
     let color: Color
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .black]
@@ -58,5 +58,4 @@ struct ColorView: View {
 
 #Preview {
     ColorView(color: .black)
-        .environmentObject(CoordinatorManager())
 }
